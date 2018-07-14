@@ -9,7 +9,7 @@
   </head>
   <body>
     <div class="contribute">
-        <a href="https://github.com/you"><a href="https://github.com/akmalhazim24/whatsapp"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+        <a href="https://github.com/you"><a href="https://github.com/akmalhazim24/whatsapp"><img style="z-index: 100; position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
         <p class="text-center">Made with <img style="margin: 4.5px 0; height: 15px; width: 15px;" src="img/love.png"> by <a href="https://www.facebook.com/akmalhazim.me">Akmal Hazim</a></p>
     </div>
 
@@ -20,12 +20,12 @@
                 {{ error }}
             </div>
         </div>
-      <h1 class="contact">Contact:</h1>
+      <h1 class="contact">WhatsApp:</h1>
         <div class="formInput">
           <form @submit.prevent="redirect" method="get" action="#">
             <input v-model="phone" class="form-control form-control-lg" type="tel" placeholder="Phone Number">
             <input v-model="message" class="form-control form-control-lg" type="text" placeholder="Message">
-            <button class="btn btn-lg btn-success" type="submit">Submit</button>
+            <button class="btn btn-lg btn-success" type="submit">Ping!</button>
           </form>
         </div>
         </div>
