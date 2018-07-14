@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WhatsApp | By Akmal Hazim</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/style.css">
+	
+  </head>
+  <body>
+
+    <div id="app" class="container d-flex justify-content-center">
+        <div class="bodyOfForm col-lg-7">
+        <div v-if="errors.length > 0">
+            <div v-for="error in errors" class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+        </div>
+      <h1 class="contact">Contact:</h1>
+        <div class="formInput">
+          <form @submit.prevent="redirect" method="get" action="#">
+            <input v-model="phone" class="form-control form-control-lg" type="tel" placeholder="Phone Number">
+            <input v-model="message" class="form-control form-control-lg" type="text" placeholder="Message">
+            <button class="btn btn-lg btn-success" type="submit">Submit</button>
+          </form>
+        </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        window.app = new Vue({
+            el: "#app",
+            data: {
+                message: '',
+                phone: '',
+                newPhone:'',
+                errors: []
+            },
+            methods: {
+                checkInput() {
+                    this.errors = [];
+                    const phoneno = /^\d{10}$/;
+                    if(!this.phone.match(phoneno)) {
+                        this.errors.push("Your phone number is incorrect. Please take the following as an example: 0109410211 without +6.");
+                    }
+                    if(!this.message.length) {
+                        this.errors.push("Please type in some message.");
+                    }
+                    else if(this.message.length > 255) {
+                        this.errors.push("Whoops, it looks like your message is too long. Please try to shorten it.");
+                    }
+
+                    if(!this.errors.length){
+                        return true;
+                    }
+                },
+                redirect() {
+
+                    if(this.checkInput()) {
+                        this.newPhone = '6'+this.phone;
+                        document.location.href = 'https://wa.me/'+this.newPhone+'?text='+this.message;
+                    }
+
+                }
+            }
+        })
+    </script>
+  </body>
+<html>
