@@ -35,3 +35,13 @@ body {
 .form-control {
     margin-bottom: 15px;
 }
+
+.contribute {
+    background-color: #333;
+    padding: 7px;
+}
+
+.contribute > p {
+    color: #fff;
+    margin: 0;
+}
