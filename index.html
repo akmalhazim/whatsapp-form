@@ -49,9 +49,11 @@
             methods: {
                 checkInput() {
                     this.errors = [];
-                    const phoneno = /^\d{10}$/;
+                    const phoneno = /^\d{10}$|^\d{11}$/;
+                    // const phoneno11 = /^\d{11}$/;
                     if(!this.phone.match(phoneno)) {
                         this.errors.push("Your phone number is incorrect. Please take the following as an example: 0109410211 without +6.");
+
                     }
                     if(!this.message.length) {
                         this.errors.push("Please type in some message.");
